@@ -2,11 +2,13 @@ import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import { HashRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { ThemeProvider } from 'styled-components';
 
 import App from '@/App';
 import "./assets/css/index.less"
 import "normalize.css"
 import store from './store';
+import theme from './assets/theme';
 
 
 
@@ -17,11 +19,14 @@ import store from './store';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Suspense fallback="loading~~~">
-   <Provider store={store}>
+    <Provider store={store}>
+      {/* 主题色 */}
+      <ThemeProvider theme={theme}>
         <HashRouter>
           <App/>
         </HashRouter>
-      </Provider>
+      </ThemeProvider>
+    </Provider>
   </Suspense>
   // <React.StrictMode>
   // </React.StrictMode>
